@@ -1,0 +1,31 @@
+<h1>TchrCoin</h1>
+<br><label for="privateKey">Private key:</label><input type="text" id="privateKey" placeholder="private key" (change)="setPrivateKey($event)">
+<br><button id="import" (click)="importPrivateKey()">Import</button>
+<br><br>
+<h3>You have <span id="balanceEth">{{model.balanceEth}}</span> ETH</h3>
+<h3>You have <span id="balanceTchr">{{model.balanceTchr}}</span> TCHR</h3>
+
+<br>
+<h1>Buy TchrCoin</h1>
+<br><label for="amount">Amount(ETH):</label><input type="text" id="amount" placeholder="eg: 100" (change)="setAmount($event)">
+<br><button id="buy" (click)="buyCoins()">Buy</button>
+<br><br>
+<span id="status">{{status}}</span>
+<table style="width:100%">
+  <tr>
+    <th>TxId</th>
+    <th>Market</th> 
+    <th>Type</th> 
+    <th>Account</th> 
+    <th>Amount</th>
+    <th>Date</th>
+  </tr>
+  <tr *ngFor="let tx of transactions | async">
+    <td>{{tx.id}}</td>
+    <td>{{tx.market}}</td>
+    <td>{{tx.type}}</td>
+    <td>{{tx.account}}</td>
+    <td>{{tx.amount}}</td>
+    <td>{{tx.timestamp}}</td>
+  </tr>
+</table>
